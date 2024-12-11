@@ -37,3 +37,21 @@ steps:
     targetPath: '$(Build.ArtifactStagingDirectory)/npm'
     artifactName: npm
   displayName: 'Publish npm artifact'
+
+# - task: OpenAICodeReviewTask@1
+#   inputs:
+#     api_key: 'sk-AZSSPEfaryK4bI2j8R5GpgHvFxBczvS9yRcqvIA5NtxRPq3y'
+#     ai_model: 'gpt-3.5-turbo'
+#     bugs: true
+#     performance: true
+#     best_practices: true
+#     file_extensions: 'js,ts,css,html'
+#     file_excludes: 'file1.js,file2.py,secret.txt'
+#     additional_prompts: 'Fix variable naming, Ensure consistent indentation, Review error handling approach'`
+
+- task: AIPRCodeReview@1
+  inputs:
+    base_api_url: "https://openai.com/"
+    api_key: "sk-AZSSPEfaryK4bI2j8R5GpgHvFxBczvS9yRcqvIA5NtxRPq3y"
+    file_extensions: ".js,.tsx,.ts,.yml"
+    file_excludes: "sitecore/**,**/*.json"
